@@ -29,6 +29,7 @@
   .metric-label { font-size: 13px; color: #52514e; margin: 0 0 4px; }
   .metric-value { font-size: 24px; font-weight: 500; margin: 0; }
   .chart-wrap { position: relative; width: 100%; margin-bottom: 24px; }
+  .narrative { font-size: 15px; line-height: 1.6; color: #2c2c2a; margin: 0 0 20px; }
 </style>
 </head>
 <body>
@@ -42,22 +43,28 @@
     <div class="metric-card"><p class="metric-label">International</p><p class="metric-value">5%</p></div>
   </div>
 
+  <p class="narrative">Broadly speaking, there have been 393 total students in the program across seven admit cohorts spanning Spring 2023 through Fall 2026. The median age is 32, but students range from 21 all the way to 66 — meaning any given cohort mixes people fresh out of undergrad with mid-career professionals a few years from retirement. Nearly half are first-generation college students, one in five identifies as LGBTQ+, and international students bring citizenship from more than 15 countries into the mix.</p>
+
   <h2>Age at enrollment</h2>
+  <p class="narrative">Nearly two in five students (42%) are under 30, but that's not the whole picture — a third are in their thirties, often balancing careers and families, and almost a quarter are 40 or older, bringing years of professional experience into the classroom. There's no single "typical" age here, which means orientation content can't assume everyone is at the same life stage.</p>
   <div class="chart-wrap" style="height: 180px;">
     <canvas id="ageChart" role="img" aria-label="Bar chart of age groups: under 30 is 42 percent, 30 to 39 is 34 percent, 40 plus is 23 percent">Under 30: 42%, 30-39: 34%, 40+: 23%</canvas>
   </div>
 
   <h2>Gender identity</h2>
+  <p class="narrative">The cohort skews heavily female, with women making up two-thirds of students. Men account for about 18%, and a small but present group identifies as nonbinary or genderqueer. Worth noting: 13% of students didn't report a gender identity at all, a reminder to keep orientation language inclusive rather than assuming a default.</p>
   <div class="chart-wrap" style="height: 160px;">
     <canvas id="genderChart" role="img" aria-label="Bar chart of gender identity: woman 67 percent, man 18 percent, nonbinary or genderqueer 2 percent, not reported 13 percent">Woman: 67%, Man: 18%, Nonbinary: 2%, Not reported: 13%</canvas>
   </div>
 
   <h2>Race and ethnicity (IPEDS categories)</h2>
+  <p class="narrative">White students make up the largest single category at 41%, followed by a substantial Asian representation at 17%. But more than a quarter of students (26%) didn't report a race at all, so this picture is necessarily incomplete. Underneath these broad IPEDS categories, self-reported ethnic identity tells a richer story — Mexican, Mexican American, and Chicano students alone account for 41 people, alongside meaningful Filipino, Chinese, and Vietnamese representation.</p>
   <div class="chart-wrap" style="height: 220px;">
     <canvas id="raceChart" role="img" aria-label="Horizontal bar chart of race categories: White 41 percent, not reported 26 percent, Asian 17 percent, two or more races 7 percent, Black 5 percent, American Indian 2 percent, Native Hawaiian or Pacific Islander 1 percent">White 41%, Not reported 26%, Asian 17%, Two or more 7%, Black 5%, American Indian 2%, Native Hawaiian/Pacific Islander 1%</canvas>
   </div>
 
   <h2>Geographic distribution</h2>
+  <p class="narrative">California is home to nearly two-thirds of the cohort, reflecting the program's regional roots, but more than a third of students are spread elsewhere — from Montana and Oregon to international students representing over 15 countries. That geographic spread carries real implications for orientation design: time zones, local health systems, and cultural context vary widely across the student body.</p>
   <div class="chart-wrap" style="height: 180px;">
     <canvas id="geoChart" role="img" aria-label="Bar chart of geography: California 64 percent, other US states 21 percent, international 5 percent, Montana 4 percent, Oregon 2 percent, Washington 2 percent">California 64%, Other US states 21%, International 5%, Montana 4%, Oregon 2%, Washington 2%</canvas>
   </div>
