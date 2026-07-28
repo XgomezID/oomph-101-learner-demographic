@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OOMPH Cohort Dashboard</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #ffffff;
+    color: #0b0b0b;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 24px 16px 48px;
+  }
+  h1 { font-size: 20px; font-weight: 500; margin: 0 0 20px; }
+  h2 { font-size: 14px; font-weight: 500; margin: 0 0 8px; }
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .metric-card {
+    background: #f5f4f0;
+    border-radius: 8px;
+    padding: 16px;
+  }
+  .metric-label { font-size: 13px; color: #52514e; margin: 0 0 4px; }
+  .metric-value { font-size: 24px; font-weight: 500; margin: 0; }
+  .chart-wrap { position: relative; width: 100%; margin-bottom: 24px; }
+</style>
+</head>
+<body>
+  <h1>OOMPH cohort dashboard</h1>
+
+  <div class="metric-grid">
+    <div class="metric-card"><p class="metric-label">Total students</p><p class="metric-value">393</p></div>
+    <div class="metric-card"><p class="metric-label">Median age</p><p class="metric-value">32</p></div>
+    <div class="metric-card"><p class="metric-label">First-gen</p><p class="metric-value">45%</p></div>
+    <div class="metric-card"><p class="metric-label">LGBTQ+</p><p class="metric-value">21%</p></div>
+    <div class="metric-card"><p class="metric-label">International</p><p class="metric-value">5%</p></div>
+  </div>
+
+  <h2>Age at enrollment</h2>
+  <div class="chart-wrap" style="height: 180px;">
+    <canvas id="ageChart" role="img" aria-label="Bar chart of age groups: under 30 is 42 percent, 30 to 39 is 34 percent, 40 plus is 23 percent">Under 30: 42%, 30-39: 34%, 40+: 23%</canvas>
+  </div>
+
+  <h2>Gender identity</h2>
+  <div class="chart-wrap" style="height: 160px;">
+    <canvas id="genderChart" role="img" aria-label="Bar chart of gender identity: woman 67 percent, man 18 percent, nonbinary or genderqueer 2 percent, not reported 13 percent">Woman: 67%, Man: 18%, Nonbinary: 2%, Not reported: 13%</canvas>
+  </div>
+
+  <h2>Race and ethnicity (IPEDS categories)</h2>
+  <div class="chart-wrap" style="height: 220px;">
+    <canvas id="raceChart" role="img" aria-label="Horizontal bar chart of race categories: White 41 percent, not reported 26 percent, Asian 17 percent, two or more races 7 percent, Black 5 percent, American Indian 2 percent, Native Hawaiian or Pacific Islander 1 percent">White 41%, Not reported 26%, Asian 17%, Two or more 7%, Black 5%, American Indian 2%, Native Hawaiian/Pacific Islander 1%</canvas>
+  </div>
+
+  <h2>Geographic distribution</h2>
+  <div class="chart-wrap" style="height: 180px;">
+    <canvas id="geoChart" role="img" aria-label="Bar chart of geography: California 64 percent, other US states 21 percent, international 5 percent, Montana 4 percent, Oregon 2 percent, Washington 2 percent">California 64%, Other US states 21%, International 5%, Montana 4%, Oregon 2%, Washington 2%</canvas>
+  </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const common = { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } };
+
+new Chart(document.getElementById('ageChart'), {
+  type: 'bar',
+  data: { labels: ['Under 30','30–39','40+'], datasets: [{ data: [42,34,23], backgroundColor: '#2a78d6', borderRadius: 4, maxBarThickness: 40 }] },
+  options: { ...common, scales: { y: { beginAtZero: true, max: 50, ticks: { callback: v => v+'%' } } } }
+});
+
+new Chart(document.getElementById('genderChart'), {
+  type: 'bar',
+  data: { labels: ['Woman','Man','Nonbinary','Not reported'], datasets: [{ data: [67,18,2,13], backgroundColor: '#2a78d6', borderRadius: 4, maxBarThickness: 30 }] },
+  options: { ...common, indexAxis: 'y', scales: { x: { beginAtZero: true, max: 80, ticks: { callback: v => v+'%' } } } }
+});
+
+new Chart(document.getElementById('raceChart'), {
+  type: 'bar',
+  data: { labels: ['White','Not reported','Asian','Two or more races','Black','American Indian','Native Hawaiian/Pacific Islander'], datasets: [{ data: [41,26,17,7,5,2,1], backgroundColor: '#2a78d6', borderRadius: 4, maxBarThickness: 22 }] },
+  options: { ...common, indexAxis: 'y', scales: { x: { beginAtZero: true, max: 50, ticks: { callback: v => v+'%' } } } }
+});
+
+new Chart(document.getElementById('geoChart'), {
+  type: 'bar',
+  data: { labels: ['California','Other US states','International','Montana','Oregon','Washington'], datasets: [{ data: [64,21,5,4,2,2], backgroundColor: '#2a78d6', borderRadius: 4, maxBarThickness: 30 }] },
+  options: { ...common, indexAxis: 'y', scales: { x: { beginAtZero: true, max: 70, ticks: { callback: v => v+'%' } } } }
+});
+</script>
+</body>
+</html>
